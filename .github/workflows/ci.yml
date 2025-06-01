@@ -25,3 +25,9 @@ jobs:
           sleep 5
           docker logs logger-test
           test -f logs/log.txt && cat logs/log.txt || echo "⚠️ No log file found"
+
+      - name: Upload log artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: logger-log
+          path: logs/log.txt
